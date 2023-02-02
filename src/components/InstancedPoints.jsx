@@ -155,13 +155,16 @@ const InstancedPoints = (props) => {
             ref={meshRef} 
             args={[null, null, numPoints]}
             frustumCulled={false}>
-              <circleGeometry 
+              <sphereGeometry
+                attach="geometry"
+                args={[0.05, 20, 20]} />
+              {/* <circleGeometry 
                 attach="geometry" 
-                args ={[0.1, 15]} />
+                args ={[0.1, 15]} /> */}
               <meshStandardMaterial 
                 attach="material" 
                 transparent={true}
-                opacity= {0.5}
+                opacity= {0.4}
                 // color="black" />
                 />
           </instancedMesh>
@@ -196,6 +199,7 @@ const Scene = ({data}) => {
       // </mesh>
       // <CustomGeometryParticles count={1000} shape="sphere"/>
     <InstancedPoints data={data}/>
+
   );
 };
 
