@@ -3,46 +3,24 @@ import { Canvas } from '@react-three/fiber'
 import Line from './components/Line'
 import { OrbitControls } from "@react-three/drei";
 import Points from './components/InstancedPoints'
-// import { randomNormal } from 'd3-random'
 import  XYPlane  from './components/XYPlane'
 import { randomNormal3D } from './Helpers/Data'
 
-// const dataArray = new Array(3000).fill(0).map((d, id) => {
-//   const x = Math.max(0, randomNormal(5, 2)())
-//   const y = Math.max(0, randomNormal(5, 2)())
-//   const z = Math.max(0, randomNormal(4, 1.5)())
-//   return { id, 
-//           x, y, z, 
-//           sourceX: x, sourceY: y, sourceZ: z, 
-//           targetX: x, targetY: y, targetZ: z }
-// })
 
-// const dataArray2 = new Array(3000).fill(0).map((d, id) => {
-//   const x = Math.min(0, randomNormal(-5, 2.5)())
-//   const y = Math.min(0, randomNormal(-5, 2.5)())
-//   const z = Math.min(0, randomNormal(-4, 2)())
-//   return { id, 
-//           x, y, z, 
-//           sourceX: x, sourceY: y, sourceZ: z, 
-//           targetX: x, targetY: y, targetZ: z }
-// })
+const initialData = randomNormal3D(6000, [1,1, 1]).concat(randomNormal3D(6000, [-1,-1,-1]))
 
 export default function App() {
   const num = 200
   const steps = [...Array(num*2).keys()].map(n => n - num)
-  const originalData = randomNormal3D(3000, [1,1, 1]).concat(randomNormal3D(3000, [-1,-1,-1]))
-
-  // const originalData = dataArray2.concat(dataArray)
-  const [data, setData] = useState(originalData)
+  const [data, setData] = useState(initialData)
 
   return (
     <>
     <Canvas camera={{fov:50, position:[-6, 6, 30], focus:90}} >
 
       <OrbitControls target={[-7, 0, 0]} enableZoom={false}/>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
 
       <fog attach="fog" args={['#fff8e7', 50, 100]} />
       
@@ -74,7 +52,7 @@ export default function App() {
       </div>
       <div className="bg-white border border-slate-500 p-4 rounded">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <button onClick={() => setData(data.map((datum, i) => ({...datum, targetX: originalData[i].x, targetY: originalData[i].y, targetZ: originalData[i].z })))}>original</button> 
+        <button onClick={() => setData(data.map((datum, i) => ({...datum, targetX: initialData[i].x, targetY: initialData[i].y, targetZ: initialData[i].z })))}>original</button> 
       </div >
     </div>
     </>
