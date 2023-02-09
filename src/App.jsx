@@ -7,6 +7,7 @@ import  XYPlane  from './components/XYPlane'
 import { randomNormal3D } from './Helpers/Data'
 
 
+
 const initialData = randomNormal3D(5000, [1,1, 1]).concat(randomNormal3D(5000, [-1,-1,-1]))
 
 export default function App() {
@@ -37,20 +38,20 @@ export default function App() {
      
     </Canvas>
    
-    <div className="flex flex-col absolute top-0 left-20 w-1/3  gap-12 py-12 ">
-      <div className="bg-white border border-slate-500 p-4 rounded ">
+    <div className="flex flex-col absolute top-0 left-20 w-1/3  gap-12 py-12 pointer-events-none">
+      <div className="bg-white border border-slate-500 p-4 rounded pointer-events-all">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         <button onClick={() => setData(data.map((datum) => ({...datum, targetX: 0, targetY: datum.y, targetZ: datum.z})))}>x</button>
       </div >
-      <div className="bg-white border border-slate-500 p-4 rounded">
+      <div className="bg-white border border-slate-500 p-4 rounded pointer-events-all">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         <button onClick={() => setData(data.map((datum) => ({...datum, targetX: datum.x, targetY: 0, targetZ: datum.z})))}>y</button>
       </div>
-      <div className="bg-white border border-slate-500 p-4 rounded">
+      <div className="bg-white border border-slate-500 p-4 rounded pointer-events-all">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         <button onClick={() => setData(data.map((datum) => ({...datum, targetX: datum.x, targetY: datum.y, targetZ: 0})))}>z</button>
       </div>
-      <div className="bg-white border border-slate-500 p-4 rounded">
+      <div className="bg-white border border-slate-500 p-4 rounded pointer-events-all">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         <button onClick={() => setData(data.map((datum, i) => ({...datum, targetX: initialData[i].x, targetY: initialData[i].y, targetZ: initialData[i].z })))}>original</button> 
       </div >
