@@ -7,7 +7,7 @@ import  XYPlane  from './components/XYPlane'
 import { randomNormal3D } from './Helpers/Data'
 
 
-const initialData = randomNormal3D(60000, [1,1, 1]).concat(randomNormal3D(60000, [-1,-1,-1]))
+const initialData = randomNormal3D(5000, [1,1, 1]).concat(randomNormal3D(5000, [-1,-1,-1]))
 
 export default function App() {
   const num = 200
